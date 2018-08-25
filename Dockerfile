@@ -8,4 +8,4 @@ RUN sed -i 's/sudo //g' $GOPATH/src/gocv.io/x/gocv/Makefile
 RUN cd $GOPATH/src/gocv.io/x/gocv && make install
 
 
-#docker stop eyecool-gocv ; docker rm eyecool-gocv ; docker run -it --privileged --name eyecool-gocv -p 20023:20022 land007/gocv:latest
+#docker stop gocv ; docker rm gocv ; docker run -it --privileged --name gocv -p 20023:20022 land007/gocv:latest
