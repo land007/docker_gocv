@@ -4,9 +4,11 @@ MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
 RUN go get -u -d gocv.io/x/gocv
 
-RUN yum install -y opencv-devel.x86_64
-
+#RUN yum install -y opencv-devel.x86_64
 RUN sed -i 's/sudo //g' $GOPATH/src/gocv.io/x/gocv/Makefile
+ENV PKG_CONFIG_PATH /usr/local/lib64/pkgconfig
+RUN echo 'export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig' >> /etc/profile
+RUN echo "/usr/local/lib" >> /etc/ld.so.conf && echo "/usr/local/lib64" >> /etc/ld.so.conf && ldconfig
 RUN cd $GOPATH/src/gocv.io/x/gocv && make install
 
 #ubuntu
